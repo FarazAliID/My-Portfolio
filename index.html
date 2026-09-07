@@ -1,1 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Faraz Ali | Python Developer</title>
+
+    <meta name="description"
+          content="Faraz Ali - Computer Science student, Python developer and technology enthusiast.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #080b12;
+            --card: #101520;
+            --card-hover: #151c29;
+            --text: #f5f7fb;
+            --muted: #9ba7b8;
+            --primary: #5b8cff;
+            --secondary: #8b5cf6;
+            --border: rgba(255,255,255,0.08);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8,11,18,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-content {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            opacity: 0.12;
+            filter: blur(120px);
+            border-radius: 50%;
+            top: 15%;
+            right: 5%;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tag {
+            display: inline-block;
+            color: var(--primary);
+            background: rgba(91,140,255,0.1);
+            border: 1px solid rgba(91,140,255,0.25);
+            padding: 8px 15px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: clamp(45px, 8vw, 80px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 19px;
+            max-width: 650px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            margin-bottom: 45px;
+        }
+
+        /* ABOUT */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 35px;
+        }
+
+        .about-card,
+        .info-card,
+        .skill-card,
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .about-card {
+            padding: 30px;
+        }
+
+        .about-card p {
+            color: var(--muted);
+            margin-bottom: 15px;
+        }
+
+        .info-card {
+            padding: 30px;
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-item small {
+            display: block;
+            color: var(--muted);
+            margin-bottom: 3px;
+        }
+
+        /* SKILLS */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .skill-card {
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            background: var(--card-hover);
+        }
+
+        .skill-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 6px;
+        }
+
+        .skill-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* PROJECTS */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .project-card {
+            padding: 28px;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            background: var(--card-hover);
+        }
+
+        .project-number {
+            color: var(--primary);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .project-tags span {
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: rgba(91,140,255,0.1);
+            color: #a9c0ff;
+        }
+
+        /* LEARNING */
+
+        .learning-box {
+            padding: 35px;
+            background: linear-gradient(
+                135deg,
+                rgba(91,140,255,0.1),
+                rgba(139,92,246,0.08)
+            );
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .learning-box p {
+            color: var(--muted);
+            max-width: 750px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 25px 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            section {
+                padding: 75px 0;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+    <div class="container nav-content">
+
+        <a href="#home" class="logo">
+            Faraz<span>.</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="tag">
+                Computer Science Student
+            </div>
+
+            <h1>
+                Hi, I'm <span>Faraz Ali.</span>
+            </h1>
+
+            <p>
+                I'm a Computer Science student interested in Python,
+                programming, data and cybersecurity. I'm continuously
+                learning and building my technical skills through
+                practical projects.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#projects" class="btn btn-primary">
+                    View Projects
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            About <span>Me</span>
+        </h2>
+
+        <p class="section-subtitle">
+            A little about my journey and interests.
+        </p>
+
+        <div class="about-grid">
+
+            <div class="about-card">
+
+                <p>
+                    I'm Faraz Ali, a Computer Science student with a
+                    strong interest in Python programming and technology.
+                </p>
+
+                <p>
+                    My current focus is improving my programming
+                    fundamentals, working with data, learning APIs,
+                    and understanding cybersecurity and Linux.
+                </p>
+
+                <p>
+                    My goal is to keep learning, build useful projects,
+                    and eventually work as a professional software
+                    developer.
+                </p>
+
+            </div>
+
+            <div class="info-card">
+
+                <div class="info-item">
+                    <small>Focus</small>
+                    <strong>Python Development</strong>
+                </div>
+
+                <div class="info-item">
+                    <small>Interests</small>
+                    <strong>Data • APIs • Cybersecurity</strong>
+                </div>
+
+                <div class="info-item">
+                    <small>Learning</small>
+                    <strong>Computer Science</strong>
+                </div>
+
+                <div class="info-item">
+                    <small>Location</small>
+                    <strong>Pakistan</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            My <span>Skills</span>
+        </h2>
+
+        <p class="section-subtitle">
+            Technologies and areas I'm currently working with.
+        </p>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <div class="skill-icon">🐍</div>
+                <h3>Python</h3>
+                <p>
+                    Programming, automation, problem solving and
+                    application development.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🗄️</div>
+                <h3>SQL</h3>
+                <p>
+                    Working with databases, queries and structured data.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <h3>Pandas</h3>
+                <p>
+                    Data manipulation, cleaning and basic analysis.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🔢</div>
+                <h3>NumPy</h3>
+                <p>
+                    Numerical computing and working with arrays and data.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🐧</div>
+                <h3>Linux</h3>
+                <p>
+                    Linux environment, terminal and basic system concepts.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🔐</div>
+                <h3>Cybersecurity</h3>
+                <p>
+                    Learning cybersecurity fundamentals and security concepts.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🌐</div>
+                <h3>REST APIs</h3>
+                <p>
+                    Understanding API concepts, requests and responses.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Featured <span>Projects</span>
+        </h2>
+
+        <p class="section-subtitle">
+            Some of my work and learning projects.
+        </p>
+
+        <div class="projects-grid">
+
+            <!-- PROJECT 01 -->
+
+            <div class="project-card">
+
+                <div class="project-number">
+                    PROJECT 01
+                </div>
+
+                <h3>My Portfolio</h3>
+
+                <p>
+                    A responsive personal portfolio website built to
+                    showcase my skills, projects and learning journey.
+                </p>
+
+                <div class="project-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>Responsive Design</span>
+                </div>
+
+                <a
+                    href="https://github.com/FarazAliID/My-Portfolio"
+                    target="_blank"
+                    class="btn btn-secondary"
+                >
+                    View Project →
+                </a>
+
+            </div>
+
+
+            <!-- PROJECT 02 -->
+
+            <div class="project-card">
+
+                <div class="project-number">
+                    PROJECT 02
+                </div>
+
+                <h3>Python Projects</h3>
+
+                <p>
+                    A collection of Python learning projects focused on
+                    programming fundamentals, logic and practical problem
+                    solving.
+                </p>
+
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>Programming</span>
+                </div>
+
+                <a
+                    href="https://github.com/FarazAliID"
+                    target="_blank"
+                    class="btn btn-secondary"
+                >
+                    View GitHub →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CURRENTLY LEARNING -->
+
+<section>
+
+    <div class="container">
+
+        <div class="learning-box">
+
+            <h2 class="section-title">
+                Currently <span>Learning</span>
+            </h2>
+
+            <p>
+                I'm continuously improving my Python skills and exploring
+                areas such as data analysis, REST APIs, Linux and
+                cybersecurity. My focus is on learning by building
+                practical projects.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Let's <span>Connect</span>
+        </h2>
+
+        <p>
+            Interested in technology, programming and learning.
+            Feel free to connect with me.
+        </p>
+
+        <div class="contact-links">
+
+            <a
+                href="https://github.com/FarazAliID"
+                target="_blank"
+                class="btn btn-primary"
+            >
+                GitHub
+            </a>
+
+            <!-- Replace with your actual LinkedIn -->
+            <a
+                href="#"
+                class="btn btn-secondary"
+            >
+                LinkedIn
+            </a>
+
+            <!-- Replace with your actual email -->
+            <a
+                href="mailto:your-email@example.com"
+                class="btn btn-secondary"
+            >
+                Email
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container">
+        © 2026 Faraz Ali. Built with HTML & CSS.
+    </div>
+
+</footer>
+
+</body>
+  </html>
